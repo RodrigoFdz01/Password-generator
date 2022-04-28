@@ -1,40 +1,90 @@
 let boton = document.getElementById("boton");
-function randomChar() {
-  let lower = String.fromCharCode(Math.floor(Math.random() * 26) + 97);
-  let lower2 = String.fromCharCode(Math.floor(Math.random() * 26) + 97);
-  let upper = String.fromCharCode(Math.floor(Math.random() * 26) + 65);
-  let upper2 = String.fromCharCode(Math.floor(Math.random() * 26) + 65);
-  let number = String.fromCharCode(Math.floor(Math.random() * 10) + 48);
-  let number2 = String.fromCharCode(Math.floor(Math.random() * 10) + 48);
-  const symbols = "!@#$%^&*(){}[]=<>/,.";
-  let symbolchar = symbols[Math.floor(Math.random() * symbols.length)];
-  let symbolchar2 = symbols[Math.floor(Math.random() * symbols.length)];
 
-  let concats = [
-    lower,
-    lower2,
-    upper,
-    upper2,
-    number,
-    number2,
-    symbolchar,
-    symbolchar2,
-  ];
-  console.log(concats);
+function randomPass(numero) {
+  let charset =
+    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*(){}[]=<>/,.";
+  // 82 chars
+  const vacio = [];
+  for (let i = 0; i < numero; i++) {
+    let randomChar = charset[Math.floor(Math.random() * charset.length)];
+    vacio.push(randomChar);
+    //let vacioJoin = vacio.join("");
+  }
+  console.log(vacio.join(""));
 }
-boton.addEventListener("click", () => {
-  randomChar();
-});
 
-// 2da opcion
+boton.addEventListener("click", () => {
+  let largo = document.getElementById("length").value;
+  //console.log(largo);
+});
+boton.addEventListener("click", () => {
+  randomPass(5);
+});
+/*
+function getRandom(arr, n) {
+  var result = new Array(n),
+    len = arr.length,
+    taken = new Array(len);
+  if (n > len)
+    throw new RangeError("getRandom: more elements taken than available");
+  while (n--) {
+    var x = Math.floor(Math.random() * len);
+    result[n] = arr[x in taken ? taken[x] : x];
+    taken[x] = --len in taken ? taken[len] : len;
+  }
+  return result;
+}
+*/
+/*
+
+function generatePassword() {
+  var length = 8,
+    charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+    retVal = "";
+  for (var i = 0, n = charset.length; i < length; ++i) {
+    retVal += charset.charAt(Math.floor(Math.random() * n));
+  }
+  return retVal;
+}
+
+const lower = "abcdefghijklmnopqrstuvwxyz";
+let lowerChar = lower[Math.floor(Math.random() * lower.length)];
+// console.log(lowerChar);
+
+const upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+let upperChar = upper[Math.floor(Math.random() * upper.length)];
+//console.log(upperChar);
+
+const number = "0123456789";
+let numberChar = number[Math.floor(Math.random() * number.length)];
+//console.log(numberChar);
+
+const symbols = "!@#$%^&*(){}[]=<>/,.";
+let symbolchar = symbols[Math.floor(Math.random() * symbols.length)];
+//console.log(symbolchar);
+
+let typesarray = [lowerChar, upperChar, numberChar, symbolchar];
+let typesJoin = typesarray.join("");
+console.log(typesJoin);
+
+
+//let charset = ["A", "B", "C", "D", "E", "F"];
+let passwordlength = 10;
+let charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+let vacio = "";
+for (let i = 0; i <= passwordlength; i++) {
+  let random = charset[Math.floor(Math.random() * charset.length)];
+  console.log(random);
+}
+*/
 
 /*
-function generatePassword() {
-    var length = 8,
-        charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
-        retVal = "";
-    for (var i = 0, n = charset.length; i < length; ++i) {
-        retVal += charset.charAt(Math.floor(Math.random() * n));
-    }
-    return retVal;
-    }*/
+function getChecked() {
+  const checkBox = document.getElementById('check1').checked;
+  if (checkBox === true) {
+    console.log(true);
+    } else {
+      console.log(false);
+  }
+}
+*/
