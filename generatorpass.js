@@ -9,28 +9,79 @@ let symbols = document.getElementById("symbols");
 function randomPass(numero) {
   let charset =
     "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*(){}[]=<>/,.";
-  // 82 chars
-  let noUpper = charset.replace(/[A-Z]/g, "");
-  let noLower = charset.replace(/[a-z]/g, "");
-  let noNumbers = charset.replace(/[0-9]/g, "");
-  let noSymbols = charset.replace(/[^\w\s]/gi, "");
-  const filters = [{ noUpper }, { noLower }, { noNumbers }, { noSymbols }];
-  console.log(filters);
+
+  const hasUpper = upper.checked;
+  const hasLower = lower.checked;
+  const hasNumbers = numbers.checked;
+  const hasSymbols = symbols.checked;
+  const array = [hasUpper, hasLower, hasNumbers, hasSymbols];
+  console.log(array);
+
+  /* function checkedFun() {
+    let noUpper = charset.replace(/[A-Z]/g, "");
+    let noLower = charset.replace(/[a-z]/g, "");
+    let noNumbers = charset.replace(/[0-9]/g, "");
+    let noSymbols = charset.replace(/[^\w\s]/gi, "");
+  }*/
+  function checkedFun() {
+    if (!hasUpper) {
+      charset.replace(/[A-Z]/g, "");
+    } else if (!hasLower) {
+      charset.replace(/[a-z]/g, "");
+    } else if (!hasNumbers) {
+      charset.replace(/[0-9]/g, "");
+    } else if (!hasSymbols) {
+      charset.replace(/[^\w\s]/gi, "");
+    } else {
+      charset;
+    }
+  }
+  //console.log(charset);
+  //const finalCharset = [noUpper, noLower, noNumbers, noSymbols];
+  //console.log(finalCharset);
 
   const empty = [];
+
   for (let i = 0; i < numero; i++) {
     let randomChar = charset[Math.floor(Math.random() * charset.length)];
     empty.push(randomChar);
   }
   let result = empty.join("");
-  //console.log(result);
+
+  //console.log(finalLen);
+  //console.log(finalResult.slice(0, finalLen - numero));
+
   userPass.innerText = result;
 }
 
 generate.addEventListener("click", () => {
   let len = document.getElementById("length").value;
   randomPass(len);
+  //checkedFun();
 });
+
+/*
+  let noUpper = charset.replace(/[A-Z]/g, "");
+  let noLower = charset.replace(/[a-z]/g, "");
+  let noNumbers = charset.replace(/[0-9]/g, "");
+  let noSymbols = charset.replace(/[^\w\s]/gi, "");  */
+
+/*
+function checkedFun() {
+  const hasUpper = upper.checked;
+  const hasLower = lower.checked;
+  const hasNumbers = numbers.checked;
+  const hasSymbols = symbols.checked;
+  console.log(hasUpper, hasLower, hasNumbers, hasSymbols);
+  if (!hasUpper) {
+    charset.replace(/[A-Z]/g, "");
+  }
+  if (!hasLower) {
+    charset.replace(/[a-z]/g, "");
+  }
+  if (!hasNumbers) charset.replace(/[0-9]/g, "");
+  if (!hasSymbols) charset.replace(/[^\w\s]/gi, "");
+}*/
 
 // -------------------------
 
