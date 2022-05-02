@@ -8,14 +8,19 @@ let symbols = document.getElementById("symbols");
 
 function randomPass(numero) {
   let charset =
-    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*(){}[]=<>/,.";
+    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_!@#$%^&*(){}[]=<>/,.";
 
   const hasUpper = upper.checked;
   const hasLower = lower.checked;
   const hasNumbers = numbers.checked;
   const hasSymbols = symbols.checked;
   const array = [hasUpper, hasLower, hasNumbers, hasSymbols];
-  console.log(array);
+  // console.log(array);
+
+  if (hasUpper + hasLower + hasNumbers + hasSymbols === 0) {
+    alert("Please check atleast one box!");
+    return;
+  }
 
   /* function checkedFun() {
     let noUpper = charset.replace(/[A-Z]/g, "");
@@ -23,19 +28,17 @@ function randomPass(numero) {
     let noNumbers = charset.replace(/[0-9]/g, "");
     let noSymbols = charset.replace(/[^\w\s]/gi, "");
   }*/
-  function checkedFun() {
-    if (!hasUpper) {
-      charset.replace(/[A-Z]/g, "");
-    } else if (!hasLower) {
-      charset.replace(/[a-z]/g, "");
-    } else if (!hasNumbers) {
-      charset.replace(/[0-9]/g, "");
-    } else if (!hasSymbols) {
-      charset.replace(/[^\w\s]/gi, "");
-    } else {
-      charset;
-    }
+
+  if (!hasUpper) {
+    console.log(charset.replace(/[A-Z]/g, ""));
+  } else if (!hasLower) {
+    console.log(charset.replace(/[a-z]/g, ""));
+  } else if (!hasNumbers) {
+    console.log(charset.replace(/[0-9]/g, ""));
+  } else if (!hasSymbols) {
+    console.log(charset.replace(/[^\w\s]/gi, ""));
   }
+
   //console.log(charset);
   //const finalCharset = [noUpper, noLower, noNumbers, noSymbols];
   //console.log(finalCharset);
@@ -61,51 +64,6 @@ generate.addEventListener("click", () => {
 });
 
 /*
-  let noUpper = charset.replace(/[A-Z]/g, "");
-  let noLower = charset.replace(/[a-z]/g, "");
-  let noNumbers = charset.replace(/[0-9]/g, "");
-  let noSymbols = charset.replace(/[^\w\s]/gi, "");  */
-
-/*
-function checkedFun() {
-  const hasUpper = upper.checked;
-  const hasLower = lower.checked;
-  const hasNumbers = numbers.checked;
-  const hasSymbols = symbols.checked;
-  console.log(hasUpper, hasLower, hasNumbers, hasSymbols);
-  if (!hasUpper) {
-    charset.replace(/[A-Z]/g, "");
-  }
-  if (!hasLower) {
-    charset.replace(/[a-z]/g, "");
-  }
-  if (!hasNumbers) charset.replace(/[0-9]/g, "");
-  if (!hasSymbols) charset.replace(/[^\w\s]/gi, "");
-}*/
-
-// -------------------------
-
-/*
-function getChecked() {
-  if (upper.checked == true) {
-    charset.replace(/[A-Z]/g, "");
-    console.log("upper");
-  } else if (lower.checked != false) {
-    charset.replace(/[a-z]/g, "");
-    console.log("lower");
-  } else if (numbers.checked == false) {
-    charset.replace(/[0-9]/g, "");
-    console.log("numbers");
-  } else if (symbols.checked == false) {
-    charset.replace(/[^\w\s]/gi, "");
-    console.log("symbols");
-  } else {
-    charset = "";
-  }
-}
-
-
-
 const lower = "abcdefghijklmnopqrstuvwxyz";
 let lowerChar = lower[Math.floor(Math.random() * lower.length)];
 // console.log(lowerChar);
