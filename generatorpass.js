@@ -15,7 +15,10 @@ function randomPass(numero) {
   const hasNumbers = numbers.checked;
   const hasSymbols = symbols.checked;
   const array = [hasUpper, hasLower, hasNumbers, hasSymbols];
-  // console.log(array);
+  //console.log(array);
+  if (array.includes(!hasUpper && !hasLower)) {
+    // console.log("no uppers y no lowers");
+  }
 
   if (hasUpper + hasLower + hasNumbers + hasSymbols === 0) {
     alert("Please check atleast one box!");
@@ -29,29 +32,25 @@ function randomPass(numero) {
     let noSymbols = charset.replace(/[^\w\s]/gi, "");
   }*/
 
-  if (!hasUpper) {
-    console.log(charset.replace(/[A-Z]/g, ""));
-  } else if (!hasLower) {
-    console.log(charset.replace(/[a-z]/g, ""));
-  } else if (!hasNumbers) {
-    console.log(charset.replace(/[0-9]/g, ""));
-  } else if (!hasSymbols) {
-    console.log(charset.replace(/[^\w\s]/gi, ""));
-  }
-
-  //console.log(charset);
-  //const finalCharset = [noUpper, noLower, noNumbers, noSymbols];
-  //console.log(finalCharset);
+  // if (!hasUpper) {
+  //   console.log(charset.replace(/[A-Z]/g, ""));
+  // } else if (!hasLower) {
+  //   console.log(charset.replace(/[a-z]/g, ""));
+  // } else if (!hasNumbers) {
+  //   console.log(charset.replace(/[0-9]/g, ""));
+  // } else if (!hasSymbols) {
+  //   console.log(charset.replace(/[^\w\s]/gi, ""));
+  // }
 
   const empty = [];
 
   for (let i = 0; i < numero; i++) {
     let randomChar = charset[Math.floor(Math.random() * charset.length)];
     empty.push(randomChar);
+    //console.log(empty);
   }
   let result = empty.join("");
-
-  //console.log(finalLen);
+  //console.log(result);
   //console.log(finalResult.slice(0, finalLen - numero));
 
   userPass.innerText = result;
@@ -59,37 +58,20 @@ function randomPass(numero) {
 
 generate.addEventListener("click", () => {
   let len = document.getElementById("length").value;
+  if (len === "") {
+    alert("choose the length of the password ! (8 to 20)");
+    userPass.innerText = "";
+  }
+
   randomPass(len);
   //checkedFun();
 });
 
-/*
-const lower = "abcdefghijklmnopqrstuvwxyz";
-let lowerChar = lower[Math.floor(Math.random() * lower.length)];
-// console.log(lowerChar);
-
-const upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-let upperChar = upper[Math.floor(Math.random() * upper.length)];
-//console.log(upperChar);
-
-const number = "0123456789";
-let numberChar = number[Math.floor(Math.random() * number.length)];
-//console.log(numberChar);
-
-const symbols = "!@#$%^&*(){}[]=<>/,.";
-let symbolchar = symbols[Math.floor(Math.random() * symbols.length)];
-//console.log(symbolchar);
-
-let typesarray = [lowerChar, upperChar, numberChar, symbolchar];
-let typesJoin = typesarray.join("");
-console.log(typesJoin);
-----------------------------------------------
-function getChecked() {
-  const checkBox = document.getElementById('check1').checked;
-  if (checkBox === true) {
-    console.log(true);
-    } else {
-      console.log(false);
-  }
-}
-*/
+// function getChecked() {
+//   const checkBox = document.getElementById('check1').checked;
+//   if (checkBox === true) {
+//     console.log(true);
+//     } else {
+//       console.log(false);
+//   }
+// }
